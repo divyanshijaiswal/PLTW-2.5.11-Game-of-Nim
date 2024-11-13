@@ -13,6 +13,7 @@ public class Game {
         System.out.println("Player 2");
         player2 = new Player();
         //end = false;
+        System.out.println("Each player has one hint that they are able to use at any point in the game. Just type hint to receive your hint.");
 
     }
     public void play() {
@@ -26,6 +27,22 @@ public class Game {
 
             while (true) { 
                 System.out.println("How many pieces would you like to take from half of " + pieces + "?");
+                if (currentPlayer == 0){
+                    if (player1.getHint() == 1) {
+                        if (sc.nextLine().equals("hint")) {
+                            hint(pieces);
+                            player1.subtractHint();
+                        }
+                    }
+                }
+                else
+                    if (player2.getHint() == 1) {
+                        if (sc.nextLine().equals("hint")) {
+                            hint(pieces);
+                            player2.subtractHint();
+                        }
+                    }
+                
                 int takePieces = sc.nextInt();
                 if (takePieces <= (int) pieces/2 && takePieces > 0) {
                     Board.removePieces(takePieces);
@@ -55,5 +72,27 @@ public class Game {
         }
 
     }
-
+    public static void hint(int pieces) {
+        if (pieces > ((int)Math.pow(2,5)-1)) {
+            int take_away =  pieces - 31;
+            System.out.println("Take away " + take_away + " pieces");
+        }
+        else if (pieces > ((int)Math.pow(2,4)-1)) {
+            int take_away = pieces - 15;
+            System.out.println("Take away " + take_away + " pieces");
+        }
+        else if (pieces > ((int)Math.pow(2,3)-1)) {
+            int take_away = pieces - 7;
+            System.out.println("Take away " + take_away + " pieces");
+        }
+        else if (pieces > ((int)Math.pow(2,2)-1)) {
+            int take_away = pieces - 3;
+            System.out.println("Take away " + take_away + " pieces");
+        }
+        else if (pieces == 3) {
+            System.out.println("Sorry buddy, you're on your own.");
+        }
+        else
+            System.out.println("Bruh, just take 1. It's not that deep.");
+    }
 }
