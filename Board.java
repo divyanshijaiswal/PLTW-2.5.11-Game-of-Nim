@@ -1,6 +1,6 @@
 public class Board {
     private static int pieces;
-    
+
     public static void populate() {
         pieces = (int) ((Math.random() * (51 - 10)) + 10);
         System.out.println("Number of pieces: " + pieces);
@@ -8,8 +8,7 @@ public class Board {
     public static int getPieces() {
         return pieces;
     }
-    public static int removePieces(int input) {
+    public static void removePieces(int input) {
         pieces -= input;
-        return pieces;
     }
 }

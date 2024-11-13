@@ -12,31 +12,46 @@ public class Game {
         player1 = new Player();
         System.out.println("Player 2");
         player2 = new Player();
-        end = false;
+        //end = false;
 
     }
     public void play() {
-        int currentPlayer = 1;
+        int currentPlayer = (int) ((Math.random() * 2));
+
         while(Board.getPieces() > 1) {
             int pieces = Board.getPieces();
             Scanner sc = new Scanner(System.in);
+            currentPlayer = (currentPlayer % 2);
+            System.out.println("\nIt's Player " + (currentPlayer+1) + "'s turn");
+
             while (true) { 
-                System.out.println("How many pieces would you like to take from half of " + pieces);
+                System.out.println("How many pieces would you like to take from half of " + pieces + "?");
                 int takePieces = sc.nextInt();
-                if (takePieces <= pieces/2 && takePieces > 0) {
+                if (takePieces <= (int) pieces/2 && takePieces > 0) {
                     Board.removePieces(takePieces);
+                    System.out.println("Num of pieces: " + Board.getPieces());
+                    currentPlayer++;
                     break;
                 } else {
                     System.out.println("Please enter a valid input");
                 }
             }
-            
-
         }
-        if (currentPlayer == 1) {
-            // they winn
+        if (currentPlayer%2 == 0) {
+            System.out.println("Player 2 won the game\n");
         } else {
-            // player 2 win
+            System.out.println("Player 1 won the game\n");
+        }
+        playAgain();
+    }
+
+    public void playAgain() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Would you like to play again? (Y/N)");
+        if (sc.nextLine().toUpperCase().equals("Y")) {
+            System.out.println();
+            Board.populate();
+            play();
         }
 
     }
