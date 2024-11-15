@@ -6,8 +6,7 @@ public class Player {
     private int hints;
 
     public Player() {
-        int hints = 1;
-        int points = 0;
+        this.hints = 1;
         System.out.println("Enter your name: ");
         Scanner sc = new Scanner(System.in);
         String newName = sc.nextLine();

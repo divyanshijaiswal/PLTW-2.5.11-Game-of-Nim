@@ -13,7 +13,7 @@ public class Game {
         System.out.println("Player 2");
         player2 = new Player();
         //end = false;
-        System.out.println("Each player has one hint that they are able to use at any point in the game. Just type hint to receive your hint.");
+        System.out.println("Each player has one hint that they are able to use at any point in the game. Just type 'Y' to receive your hint.");
 
     }
     public void play() {
@@ -26,24 +26,34 @@ public class Game {
             System.out.println("\nIt's Player " + (currentPlayer+1) + "'s turn");
 
             while (true) { 
+                
                 System.out.println("How many pieces would you like to take from half of " + pieces + "?");
+                // if player 1 has a hint
                 if (currentPlayer == 0){
+                    System.out.println(player1.getHint());
                     if (player1.getHint() == 1) {
+                        
+                        System.out.println("Would you like to use your hint? (hint)");
                         if (sc.nextLine().equals("hint")) {
                             hint(pieces);
                             player1.subtractHint();
-                        }
+                                                }
                     }
                 }
-                else
+                // if player 2 has a hint
+                else {
+                    System.out.println(player2.getHint());
                     if (player2.getHint() == 1) {
+                        System.out.println("Would you like to use your hint? (hint)");
                         if (sc.nextLine().equals("hint")) {
                             hint(pieces);
                             player2.subtractHint();
+                            
                         }
                     }
-                
-                int takePieces = sc.nextInt();
+                } 
+                Scanner sc2 = new Scanner(System.in);    
+                int takePieces = sc2.nextInt();
                 if (takePieces <= (int) pieces/2 && takePieces > 0) {
                     Board.removePieces(takePieces);
                     System.out.println("Num of pieces: " + Board.getPieces());
