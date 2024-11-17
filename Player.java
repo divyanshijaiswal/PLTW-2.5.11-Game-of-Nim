@@ -6,12 +6,17 @@ public class Player {
     private int hints;
 
     public Player() {
-        this.hints = 1;
         System.out.println("Enter your name: ");
         Scanner sc = new Scanner(System.in);
         String newName = sc.nextLine();
-        String name = newName;
+        this.name = newName;
+        this.score = 0;
+        this.hints = 1;
         System.out.println("Welcome to the game " + name);
+    }
+    public Player(String aIPlayer) {
+        this.name = aIPlayer;
+        this.score = 0;
     }
 
     public String getName() {
@@ -23,8 +28,8 @@ public class Player {
     public void setName(String inputName) {
         this.name = inputName;
     }
-    public void addToScore(int value) {
-        this.score = value;
+    public void addToScore() {
+        this.score += 1;
     }
     public int getHint() {
         return this.hints;
@@ -33,6 +38,4 @@ public class Player {
         this.hints -= 1;
     }
     
-
-
 }
