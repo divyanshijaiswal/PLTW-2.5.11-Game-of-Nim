@@ -1,4 +1,5 @@
 public class Board {
+    
     private static int pieces;
 
     public static void populate() {

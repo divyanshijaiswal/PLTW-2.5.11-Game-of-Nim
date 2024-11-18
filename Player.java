@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class Player {
+    
     private String name;
     private int score;
     private int hints;
@@ -12,7 +13,7 @@ public class Player {
         this.name = newName;
         this.score = 0;
         this.hints = 1;
-        System.out.println("Welcome to the game " + name);
+        System.out.println("Welcome to the game " + name +"\n");
     }
     public Player(String aIPlayer) {
         this.name = aIPlayer;
@@ -25,14 +26,12 @@ public class Player {
     public int getScore() {
         return this.score;
     }
-    public void setName(String inputName) {
-        this.name = inputName;
-    }
-    public void addToScore() {
-        this.score += 1;
-    }
     public int getHint() {
         return this.hints;
+    }
+
+    public void addToScore() {
+        this.score += 1;
     }
     public void subtractHint() {
         this.hints -= 1;
